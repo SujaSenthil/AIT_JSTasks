@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Form Validation</title>
+	<style>
+		.section{
+			margin-top: 60px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.container{
+			border: 1 px solid;
+			box-shadow: 0px 1px 1px 1px;
+			width:400px;
+			height: 300px;
+			justify-content: center;
+			text-align: center;
+			font-family: sans-serif;
+		}
+		form{
+			border-radius: 4px;
+		}
+		span{
+			font-size: 15px;
+			font: sans-serif;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<h1><center>New User Signup</center></h1>
+	<section class="section">
+		<div class="container">
+			<form>
+				<br>
+				<input id="fname" type="text" placeholder="FirstName" size="40"><br><br>
+				<span id="name-error" class="error"></span>
+				<input id="uname" type="text" placeholder="username" size="40"><br><br>
+				<span id="uname-error" class="error"></span>
+				<input id="email" type="email" placeholder="email" size="40"><br><br>
+				<span id="email-error" class="error"></span>
+				<input id="pswd" type="password" placeholder="password" size="40"><br><br>
+				<span id="pswd-error" class="error"></span>
+				<input id="phone" placeholder="telephone" size="40"><br><br>
+				<span id="phone-error" class="error"></span>
+				<input id="pancard"  placeholder="panCard" size="40">
+				<span id="pan-error" class="error"></span>
+			</form>
+		</div>
+	</section>
+	<script>
+		
+		const nameValue = document.getElementById("fname");
+		const userValue = document.getElementById("uname");
+		const emailValue = document.getElementById("email");
+		const pswdValue = document.getElementById("pswd");
+		const phoneValue = document.getElementById("phone");
+		const panValue = document.getElementById("pancard");
+
+		const nerror= document.getElementById("name-error");
+		const uerror= document.getElementById("uname-error");
+		const emailerror= document.getElementById("email-error");
+		const pswderror= document.getElementById("pswd-error");
+		const phoneerror= document.getElementById("phone-error");
+		const panerror= document.getElementById("pan-error");
+
+		// FirstName validation
+
+		function validateName(){
+		const name = nameValue.value;
+
+		if(!(name.match(/^[a-zA-Z]{3,14}[a-zA-Z]$/))){
+    	nerror.innerHTML = "Firstname must be and contain 4-15 characters";
+ 		}
+ 		else{
+ 		nerror.innerHTML="";
+ 		}
+ 		}
+ 		nameValue.addEventListener('keyup',validateName);
+ 		
+ 		// Username Validation
+
+ 		function validateUser(){
+ 		const uname = userValue.value;
+    	if(!(uname.match(/^[a-zA-Z0-9]{5,11}[a-zA-Z0-9]$/))){
+    	uerror.innerHTML ="User name should be alphanumeric and should contain 5-12 characters.";
+   		 }
+    	else{
+       uerror.innerHTML ="";
+    	}
+ 		}	
+
+ 		userValue.addEventListener('keyup',validateUser);
+
+ 		// Email Validation
+
+ 		function validateemail(){
+
+ 		const email = emailValue.value;
+    	if(!(email.match(/^[a-zA-Z0-9\.\_\-]+[@][a-z]+[\.][a-z]{2,4}$/))){
+    	emailerror.innerHTML ="Enter a valid email address";
+    	}
+    	else{
+        emailerror.innerHTML ="";
+ 		}
+ 		}
+
+ 		emailValue.addEventListener('keyup',validateemail);
+
+ 		// Password valiadation
+
+ 		function validatePswd(){
+
+ 		const pwd = pswdValue.value;
+    	if(!(pwd.match(/^[a-zA-Z0-9\.\_\-]+[\W]+[a-zA-Z0-9]+$/))){
+    	pswderror.innerHTML ="Password must be alphanumeric and 8-20 characters long.";
+    	}
+    	else{
+        	pswderror.innerHTML ="";
+    	}
+    	}
+ 		
+ 		pswdValue.addEventListener('keyup',validatePswd);
+
+ 		//phone number validation
+
+ 		function validatePhone(){
+
+ 		const phone = phoneValue.value;
+   		 if(!(phone.match(/^[6-9][0-9]{9}$/))){
+   
+    	phoneerror.innerHTML ="Enter a valid telephone number.";
+   		 }
+   	 else{
+       
+       phoneerror.innerHTML ="";
+   		 }
+ 		}
+
+ 		phoneValue.addEventListener('keyup',validatePhone);
+
+ 		// Pan card validation
+
+ 		function validatePan(){
+
+ 		const pan = panValue.value;
+    if(!(pan.match(/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/))){
+        panerror.innerHTML ="Enter a valid pan card number.";
+    }
+    else{
+  
+        panerror.innerHTML ="";
+    }
+ 		}
+
+ 		panValue.addEventListener('keyup',validatePan);
+	</script>
+</body>
+</html>
